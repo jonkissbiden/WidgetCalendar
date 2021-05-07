@@ -1,0 +1,53 @@
+﻿<Window x:Class="Calendar.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calendar"
+        xmlns:properties="clr-namespace:Calendar.Properties"
+        xmlns:ui="http://schemas.modernwpf.com/2019" xmlns:system="clr-namespace:System;assembly=System.Runtime"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        ui:ThemeManager.IsThemeAware="False"
+        fw:AcrylicWindow.Enabled="True"
+        fw:AcrylicWindow.AcrylicWindowStyle="NoIcon"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="{x:Static properties:Resources.SettingsWindowTitle}" 
+        Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <CheckBox Grid.Row="0" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=AutoStart}"
+            x:Name="AutoStartCheckBox" Margin="10 0"  Content="{x:Static properties:Resources.CheckBoxAutoStart}"
+            VerticalAlignment="Top" Width="280" HorizontalAlignment="Left" FontSize="14"
+            Checked="AutoRun_Checked" Unchecked="AutoRun_Unchecked"/>
+        <CheckBox Grid.Row="1" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ToBackground}"
+            x:Name="ShoveToBackground" Margin="10 0"  Content="{x:Static properties:Resources.CheckBoxToBackground}" 
+            VerticalAlignment="Top" Width="280" HorizontalAlignment="Left" FontSize="14"
+            Checked="ShoveToBackground_Checked" Unchecked="ShoveToBackground_Unchecked"/>
+        <CheckBox Grid.Row="2" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=isGoogleSyncEnabled}"
+            x:Name="GoogleSyncCheckBox" Margin="10 0"  Content="{x:Static properties:Resources.CheckBoxGoogleSync}" 
+            VerticalAlignment="Top" Width="280" HorizontalAlignment="Left" FontSize="14"/>
+        <ComboBox Margin="105,31,0,0" Grid.Row="2" Width="175" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex = "{Binding Source={x:Static properties:Settings.Default}, Path=SelectesIndex}">
+            <ComboBoxItem >
+                <system:String>English</system:String>
+            </ComboBoxItem>
+            <ComboBoxItem >
+                <system:String>Deutsche</system:String>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <system:String>Français</system:String>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <system:String>Italiano</system:String>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <system:String>España</system:String>
+            </ComboBoxItem>
+        </ComboBox>
+        <Label Content="{x:Static properties:Resources.LableSettigs}" HorizontalAlignment="Left" Margin="10,33,0,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="65"/>
+    </Grid>
+</Window>

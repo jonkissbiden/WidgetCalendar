@@ -1,0 +1,56 @@
+﻿<Window x:Class="Calendar.Views.CheckListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calendar.Views" xmlns:models="clr-namespace:Calendar.Models" d:DataContext="{d:DesignInstance Type=models:CheckList}"
+        mc:Ignorable="d"
+        xmlns:ui="http://schemas.modernwpf.com/2019" xmlns:viewmodels="clr-namespace:Calendar.ViewModels"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        ui:ThemeManager.IsThemeAware="False"
+        BorderBrush="Transparent"
+        WindowStyle="None"
+        BorderThickness="0"
+        AllowsTransparency="True"
+        fw:AcrylicWindow.Enabled="True"
+        fw:AcrylicWindow.AcrylicWindowStyle="None"
+        WindowStartupLocation="CenterOwner"  
+        Loaded="Checklist_Loaded"
+        SizeToContent="WidthAndHeight"
+        Background="{x:Null}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Label Content="New TaskList:" 
+                   Width="210"
+                   Grid.Row="0"
+                   FontWeight="DemiBold"/>
+            <TextBox Name="ChkLstTextbox"
+                     Text="{Binding CheckListText}" 
+                     Margin="10"
+                     Grid.Row="1"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Center" 
+                     Width="200" 
+                     KeyDown="OnKeyDown"/>
+            <StackPanel Orientation="Horizontal">
+                <Button  IsCancel="True" Margin="25,5" FontSize="12" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" MinWidth="70">Cancel</Button>
+                <Button IsDefault="True" Margin="0,5" Click="Accept_Click" FontSize="12" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" MinWidth="70" HorizontalAlignment="Center">Add</Button>
+            </StackPanel>
+        </StackPanel>
+       
+    </Grid>
+</Window>
